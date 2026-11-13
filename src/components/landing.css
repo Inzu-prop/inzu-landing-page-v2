@@ -50,6 +50,8 @@
 .lp .lp-button{position:relative;overflow:hidden;min-height:48px;padding:0 58px 0 22px;gap:0;background:#90b494;color:#13270d;transition:background .3s ease,color .3s ease}
 .lp .lp-button-light{background:#f5f8ef;color:#233e2a}
 .lp-button-label{position:relative;z-index:1;transition:transform .45s cubic-bezier(.23,1,.32,1)}
+.lp-hero-actions .lp-button-label{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.lp-button-wordmark{display:block;width:32px;height:24px;object-fit:contain}
 .lp-button-arrow{position:absolute;right:4px;top:4px;bottom:4px;aspect-ratio:1;display:grid;place-items:center;border-radius:50%;background:#13270d;color:#f5f7f6;transition:right .45s cubic-bezier(.23,1,.32,1),transform .45s cubic-bezier(.23,1,.32,1)}
 .lp .lp-button:hover,.lp .lp-button:focus-visible{background:#dce9d7;transform:none}
 .lp-button:hover .lp-button-label,.lp-button:focus-visible .lp-button-label{transform:translateX(36px)}
@@ -211,6 +213,73 @@
 .lp-final-flow .lp-final-thread{z-index:3;opacity:1}
 .lp-pricing-flare{z-index:4}
 
+/* About page: shared surfaces, connected pattern cards, and a quieter mark. */
+.lp .lp-brand img{width:64px;height:40px}
+.lp-about-hero{position:relative}
+.lp-about .lp-corners svg{fill:var(--canvas)}
+.lp-about-intro{position:relative;padding-top:0}
+.lp-about-intro .lp-hero-thread{margin-inline:auto}
+.lp-about-intro .lp-manifesto-label{display:inline-flex;align-items:center;justify-content:center}
+.lp-about-content{position:relative;overflow:hidden;padding-top:max(80px,6vw);padding-bottom:max(80px,6vw)}
+.about-connector{height:120px;display:flex;justify-content:center}
+.about-connector svg{width:64px;height:100%;fill:#f8f9f4;display:block}
+.lp-about-values{position:relative;margin-top:0;overflow:hidden;padding-top:max(80px,6vw);padding-bottom:max(80px,6vw)}
+.about-values-heading{display:flex;align-items:end;justify-content:space-between;gap:32px}
+.about-values-heading>p{max-width:280px;color:#c0d0bd}
+.about-values-list{max-width:930px;margin:60px auto 0}
+.about-value{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:clamp(35px,6vw,90px);align-items:center}
+.about-value-node{position:relative;margin-bottom:70px}
+.about-value:last-child .about-value-node{margin-bottom:0}
+.about-value-pattern{position:relative;overflow:hidden;border:7px solid #d5dfd2;border-radius:22px;aspect-ratio:1.6;background:#d5dfd2}
+.about-value-pattern .lp-pattern-motion{position:absolute;inset:0}
+.about-value-link{position:absolute;left:50%;top:calc(100% - 1px);transform:translateX(-50%);width:64px;height:72px;fill:#d5dfd2;display:block}
+.about-value-copy{align-self:start;padding-top:14px}
+.about-value-copy span{font-size:10px;letter-spacing:.12em;color:#a9c0a8}
+.about-value-copy h3{font-size:clamp(27px,2.8vw,38px);margin:20px 0 12px}
+.about-value-copy p{max-width:360px;color:#c0d0bd}
+@media(max-width:700px){.lp-about-intro{padding-top:0}.about-values-heading{display:block}.about-values-list{margin-top:35px}.about-value{grid-template-columns:minmax(0,1fr);gap:18px}.about-value-node{margin-bottom:0}.about-value-link{display:none}.about-value-copy{padding:0 0 35px}.about-value:last-child .about-value-copy{padding-bottom:0}}
+
+/* A separate editorial composition for the About page's three principles. */
+.about-values-composition{max-width:1440px;margin:0 auto;position:relative}
+.about-values-intro{width:60%;background:#f8f9f4;border-radius:24px;padding:clamp(30px,4vw,60px);color:var(--ink)}
+.about-values-intro h2{font-size:clamp(42px,5vw,72px);line-height:1.02;margin:28px 0 20px;max-width:580px}
+.about-values-intro p{font-size:15px;line-height:1.8;color:#6e8070;max-width:390px}
+.about-values-intro-foot{display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid #d8e1d6;padding-top:20px;margin-top:55px;font-size:9px;letter-spacing:.14em}
+.about-values-intro-foot span{font-size:24px;line-height:1}
+.about-values-route{width:100%;height:130px;display:block;overflow:visible;pointer-events:none}
+.about-values-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,32px)}
+.about-principle{position:relative;background:#f8f9f4;border-radius:22px;padding:7px;min-width:0}
+.about-principle-art{position:relative;isolation:isolate;overflow:hidden;height:clamp(150px,16vw,220px);border-radius:16px;background:#294c34;display:grid;place-items:center}
+.about-principle-art-coral{background:#a44730}.about-principle-art-blue{background:#174f80}
+.about-principle-art .lp-aurora{z-index:0}
+.about-principle-art>span{position:relative;z-index:1;padding:12px 16px;border-radius:99px;background:#f8f9f4;color:#294c34;font-size:10px;letter-spacing:.1em;font-weight:600}
+.about-principle-copy{padding:28px 23px 32px;min-height:180px}
+.about-principle-copy .lp-section-label{color:#839485;font-size:9px}
+.about-principle-copy h3{font-size:clamp(23px,2.3vw,34px);line-height:1.1;margin:18px 0 12px}
+.about-principle-copy p{color:#6e8070;font-size:14px;line-height:1.7;margin:0}
+.about-values-exit{height:120px;display:flex;justify-content:center}
+.about-values-exit svg{width:64px;height:100%;display:block;fill:#f8f9f4}
+.lp-about-cta{padding-top:0}
+.lp-about-cta>.lp-section-label{display:inline-block;background:#f8f9f4;border-radius:30px;padding:13px 20px}
+@media(max-width:700px){.about-values-intro{width:100%}.about-values-intro-foot{margin-top:32px}.about-values-route{height:90px}.about-values-cards{grid-template-columns:1fr;gap:20px}.about-principle-art{height:180px}.about-principle-copy{min-height:0}.lp-about-cta{padding-top:0}}
+
+/* Draw the stepped card as one surface; keep the connectors in the same coordinates. */
+.about-connector{max-width:1440px;margin-inline:auto}
+.about-connector svg{width:100%;overflow:visible}
+.about-values-intro{position:relative;isolation:isolate;width:48%;background:transparent;border-radius:0;padding:clamp(25px,3vw,44px) clamp(25px,3vw,44px) 55px}
+.about-intro-shape{position:absolute;z-index:-1;inset:0;width:100%;height:100%;display:block;fill:#f8f9f4;pointer-events:none}
+.about-values-intro h2{max-width:75%;font-size:clamp(34px,3.5vw,52px);margin:20px 0 14px}
+.about-values-intro p{max-width:72%;font-size:13px;line-height:1.6}
+.about-values-intro-foot{margin:30px 15% 0 25%;padding-top:14px;font-size:8px}
+.about-values-cards{--about-card-gap:clamp(14px,2vw,32px);gap:var(--about-card-gap)}
+.about-card-bridge{position:absolute;z-index:1;left:calc(100% - 1px);top:50%;transform:translateY(-50%);width:calc(var(--about-card-gap) + 2px);height:64px;display:block;fill:#f8f9f4;pointer-events:none}
+.lp-about .lp-corners path{stroke:var(--canvas);stroke-width:2;stroke-linejoin:round}
+@media(max-width:700px){.about-values-intro{width:100%;padding-bottom:50px}.about-values-intro h2{max-width:75%}.about-values-intro-foot{margin-top:24px}.about-card-bridge{display:none}}
+
+.about-values-intro{width:40%;padding-bottom:32px}
+.about-values-intro-foot{display:block;max-width:72%;margin:18px 0 0;padding-top:0;border:0;line-height:1.5}
+@media(max-width:700px){.about-values-intro{width:100%;padding-bottom:32px}}
+
 /* Use the supplied Inzu wordmark and keep the floating navigation compact. */
 .lp-brand{display:inline-flex;align-items:center;flex:none}
 .lp-brand img{display:block;width:82px;height:50px;object-fit:contain}
@@ -227,3 +296,19 @@
 .lp-stories::before{display:none}
 .lp-feature-entrance{position:absolute;z-index:1;top:-1px;left:50%;width:64px;height:calc(max(80px,5vw) + 2px);transform:translateX(-50%);fill:#d5dfd2;pointer-events:none}
 @media(max-width:900px){.lp-feature-entrance{display:none}}
+
+/* Measure both endpoints in the same coordinate space to avoid subpixel seams. */
+.lp-feature-flow{position:relative;max-width:1440px;margin:0 auto}
+.lp-measured-thread{position:absolute;inset:0;width:100%;height:100%;z-index:5;overflow:visible;pointer-events:none}
+@media(max-width:900px){.lp-measured-thread{display:none}}
+
+/* Give the page titles room without an extra label above them. */
+.lp-about-hero{border-radius:22px 22px 0 0;padding-top:clamp(140px,13vw,185px)}
+.lp-about-hero h1{margin-top:0}
+.lp-hero{padding-top:125px}
+.lp-hero-copy{padding-top:20px}
+.lp-nav-request{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 18px;border-radius:999px;background:#90b494;color:#13270d;font-size:12px;font-weight:600;white-space:nowrap;transition:background-color .2s}
+.lp-nav-request:hover{background:#a9c8a9;opacity:1!important}
+.lp-nav-request:focus-visible{outline:3px solid #b7783e;outline-offset:3px}
+.lp-mobile-menu .lp-nav-request{align-self:flex-start}
+@media(max-width:560px){.lp-hero{padding-top:105px}.lp-hero-copy{padding-top:20px}.lp-about-hero{padding-top:135px}}
