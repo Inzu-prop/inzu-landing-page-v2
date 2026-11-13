@@ -1,6 +1,4 @@
-import { motion } from 'motion/react';
-import Navbar from './Navbar';
-import Footer from './Footer';
+import LegalPage from './LegalPage';
 
 const sections = [
   {
@@ -120,65 +118,6 @@ These Terms were last updated: March 2026.`
   },
 ];
 
-const TermsOfServicePage = () => {
-  return (
-    <div className="bg-ivory">
-      <Navbar />
-
-      {/* Hero */}
-      <section className="relative bg-obsidian min-h-[40vh] flex items-center pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(106,125,110,0.12),transparent_70%)]" />
-        <div className="container-custom relative z-10">
-          <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-[11px] font-body font-medium tracking-[0.2em] text-sage uppercase mb-6 block"
-          >
-            LEGAL
-          </motion.span>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="font-display text-5xl md:text-7xl text-silk leading-[1.0] mb-6"
-          >
-            Terms of Service
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.25 }}
-            className="font-body font-light text-silk/40 text-sm tracking-widest uppercase"
-          >
-            Last updated: March 2026 · Governed by the laws of Kenya
-          </motion.p>
-        </div>
-      </section>
-
-      {/* Content */}
-      <section className="py-24 bg-ivory">
-        <div className="container-custom max-w-4xl">
-          <div className="flex flex-col divide-y divide-forest/8">
-            {sections.map((section) => (
-              <div key={section.num} className="py-12 flex items-start gap-8">
-                <span className="text-[11px] font-body font-medium tracking-[0.2em] text-sage/40 uppercase shrink-0 pt-2 w-6">
-                  {section.num}
-                </span>
-                <div className="flex-1">
-                  <h2 className="font-display text-3xl text-obsidian mb-6">{section.title}</h2>
-                  <div className="font-body font-light text-ash text-base leading-relaxed whitespace-pre-line">
-                    {section.content}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <Footer />
-    </div>
-  );
-};
+const TermsOfServicePage = () => <LegalPage title="Terms of Service" metadata="Last updated: March 2026 | Governed by the laws of Kenya" sections={sections} />;
 
 export default TermsOfServicePage;

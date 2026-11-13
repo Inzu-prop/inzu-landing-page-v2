@@ -42,10 +42,10 @@ export function Header() {
     <nav className="lp-nav" aria-label="Main navigation">
       <BrandMark />
       <div className="lp-nav-links"><Link to="/#pricing">Pricing</Link><Link to="/about">About</Link></div>
-      <div className="lp-nav-actions"><a href="https://app.inzu.co/sign-in">Sign in</a><Link className="lp-nav-request" to="/request-access">Request access</Link></div>
+      <div className="lp-nav-actions"><a href="https://app.inzu.co/sign-in">Sign in</a></div>
       <button className="lp-menu-toggle" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="landing-mobile-menu" onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
     </nav>
-    {open && <div className="lp-mobile-menu" id="landing-mobile-menu"><Link onClick={() => setOpen(false)} to="/#pricing">Pricing</Link><Link onClick={() => setOpen(false)} to="/about">About</Link><a href="https://app.inzu.co/sign-in">Sign in</a><Link className="lp-nav-request" onClick={() => setOpen(false)} to="/request-access">Request access</Link></div>}
+    {open && <div className="lp-mobile-menu" id="landing-mobile-menu"><Link onClick={() => setOpen(false)} to="/#pricing">Pricing</Link><Link onClick={() => setOpen(false)} to="/about">About</Link><a href="https://app.inzu.co/sign-in">Sign in</a></div>}
   </header>;
 }
 
@@ -106,7 +106,7 @@ export default function Landing() {
   return <div className="lp"><a className="lp-skip" href="#main">Skip to content</a><Header /><main id="main">
     <section className="lp-hero lp-panel">
       <div className="lp-hero-copy"><h1>Make room for <em>better</em> property management.</h1><p>Meet Inzu. A clearer way to keep up with your properties, tenants and finances, all in one place.</p><div className="lp-hero-actions"><ArrowLink to="/request-access">Get to know <img className="lp-button-wordmark" src={wordmark} alt="Inzu" /></ArrowLink></div></div>
-      <div className="lp-hero-bottom"><span>INZU / NAIROBI</span><span>PROPERTY, WITH PERSPECTIVE</span><span>SCROLL TO EXPLORE ↓</span></div><PanelCorners bottom />
+      <PanelCorners bottom />
     </section>
 
     <section className="lp-manifesto" id="how-it-works"><div className="lp-hero-thread" aria-hidden="true"><span className="lp-thread-line" /><svg className="lp-thread-flare lp-thread-top" viewBox="0 0 64 28"><path d="M0 0 C20 0 31 0 31 28 H33 C33 0 44 0 64 0 Z" /></svg><svg className="lp-thread-flare lp-thread-bottom" viewBox="0 0 64 28"><path d="M0 0 C20 0 31 0 31 28 H33 C33 0 44 0 64 0 Z" /></svg></div><span className="lp-section-label lp-manifesto-label">A LITTLE MORE CLARITY</span><p>Property comes with a lot of moving parts. <strong>Keeping track of them should feel a little more human.</strong></p></section>
