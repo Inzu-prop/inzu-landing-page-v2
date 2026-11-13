@@ -42,7 +42,26 @@ const palettes = {
   green: ['.07, .21, .14', '.18, .55, .33', '.71, .88, .58', '.34, .75, .45'],
   coral: ['.30, .08, .07', '.78, .23, .16', '1.0, .68, .42', '.99, .37, .24'],
   blue: ['.025, .12, .30', '.06, .34, .66', '.48, .78, .93', '.20, .53, .94'],
+  hero: ['.035, .095, .06', '.25, .49, .33', '.60, .75, .52', '1.0, .30, .15'],
 } as const;
+
+// The hero field fades to the exact paper color before it reaches the white strip.
+const heroFragment = fragment.slice(0, fragment.indexOf('void main()')) + `
+void main() {
+  vec2 uv = gl_FragCoord.xy / resolution.xy;
+  vec2 p = (uv - .5) * vec2(resolution.x / resolution.y, 1.0) * 2.2;
+  float f = field(p, time);
+  float band = 1.0 - smoothstep(.03, .68, abs(f - .10));
+  float core = 1.0 - smoothstep(.02, .25, abs(f - .10));
+  float accents = smoothstep(-.5, .7, sin(p.x * 1.7 - p.y * 1.2 + time * .12));
+  vec3 paper = vec3(248.0 / 255.0, 249.0 / 255.0, 244.0 / 255.0);
+  vec3 sage = vec3(.72, .82, .72);
+  vec3 coral = vec3(.96, .78, .70);
+  vec3 mesh = mix(paper, mix(sage, coral, accents * .60), band * .60);
+  mesh = mix(mesh, mix(sage, coral, accents * .65), core * .16);
+  float fade = smoothstep(.0, .32, uv.y);
+  gl_FragColor = vec4(mix(paper, mesh, fade), 1.0);
+}`;
 
 export default function Aurora({ variant = 'home' }: { variant?: keyof typeof palettes }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -63,7 +82,7 @@ export default function Aurora({ variant = 'home' }: { variant?: keyof typeof pa
     };
     const vertex = compile(gl.VERTEX_SHADER, 'attribute vec2 position; void main() { gl_Position = vec4(position, 0.0, 1.0); }');
     const [dark, green, sage, coral] = palettes[variant];
-    const shaderSource = fragment.replace('vec3(.035, .095, .06)', `vec3(${dark})`).replace('vec3(.25, .49, .33)', `vec3(${green})`).replace('vec3(.60, .75, .52)', `vec3(${sage})`).replace('vec3(1.0, .30, .15)', `vec3(${coral})`);
+    const shaderSource = variant === 'hero' ? heroFragment : fragment.replace('vec3(.035, .095, .06)', `vec3(${dark})`).replace('vec3(.25, .49, .33)', `vec3(${green})`).replace('vec3(.60, .75, .52)', `vec3(${sage})`).replace('vec3(1.0, .30, .15)', `vec3(${coral})`);
     const pixel = compile(gl.FRAGMENT_SHADER, shaderSource);
     const program = gl.createProgram();
     if (!vertex || !pixel || !program) return;

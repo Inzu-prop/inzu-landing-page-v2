@@ -104,7 +104,8 @@ function FeatureFlow() {
 
 export default function Landing() {
   return <div className="lp"><a className="lp-skip" href="#main">Skip to content</a><Header /><main id="main">
-    <section className="lp-hero lp-panel">
+    <section className="lp-hero lp-panel lp-hero--mesh">
+      <div className="lp-hero-mesh" aria-hidden="true"><Aurora variant="hero" /></div>
       <div className="lp-hero-copy"><h1>Make room for <em>better</em> property management.</h1><p>Meet Inzu. A clearer way to keep up with your properties, tenants and finances, all in one place.</p><div className="lp-hero-actions"><ArrowLink to="/request-access">Get to know <img className="lp-button-wordmark" src={wordmark} alt="Inzu" /></ArrowLink></div></div>
       <PanelCorners bottom />
     </section>

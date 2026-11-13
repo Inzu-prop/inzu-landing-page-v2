@@ -72,7 +72,7 @@ The homepage hero has one centered primary action. Its `Get to know` label inclu
 
 ### Homepage
 
-1. Light hero with centered message, supporting sentence and a single call to action. Rounded top corners; the lower edge has stepped cutouts.
+1. Light animated hero with centered message, supporting sentence and a single call to action. Its white-based mesh fades to paper above the stepped lower edge, which has rounded top corners and stepped cutouts.
 2. A thin vertical connection flares out of the hero and into the small `A little more clarity` pill above the manifesto.
 3. Dark green portfolio panel with an illustrative dashboard, meeting a light feature area. The feature area has three patterned frames beside their descriptions and colored word highlights, followed by a property image.
 4. Conversation / access section, then a large dark animated closing stage with a fine line passing through it.
@@ -164,7 +164,7 @@ After changing shapes, SVG paths, typography, copy or responsive layout:
 
 ## 12. Current limitations and maintenance priorities
 
-- The homepage hero and its connector use the original paper-colored surface. Bottom corner overlays are offset downward by 2px to overlap the clipped panel edge; this adjustment needs close visual verification at the affected viewport, phone widths and browser zoom levels.
+- The homepage hero uses a light mesh that fades to the original paper-colored surface before the stepped strip and connector. A paper background is the WebGL fallback. Bottom corner overlays are offset downward by 2px to overlap the clipped panel edge; the hero and corner seams need close visual verification at phone widths and browser zoom levels.
 
 - The measured homepage feature line is tied to a desktop layout and intentionally hidden at narrower widths. It should not be represented as a universal measured connector system.
 - The About routes and card bridges use fixed SVG/CSS geometry, not the measured connector. Their alignment is sensitive to changes in width, aspect ratio, text wrapping and the stepped intro. Revisit with measured anchors if the composition changes or a new seam appears.

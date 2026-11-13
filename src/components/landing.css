@@ -313,6 +313,12 @@
 .lp-mobile-menu .lp-nav-request{align-self:flex-start}
 @media(max-width:560px){.lp-hero{padding-top:105px}.lp-hero-copy{padding-top:20px}.lp-about-hero{padding-top:135px}}
 
+/* Fade the hero mesh to paper before the stepped edge and connector. */
+.lp-hero--mesh{isolation:isolate}
+.lp-hero--mesh .lp-hero-copy>p{color:#455e4d}
+.lp-hero-mesh{position:absolute;inset:0 0 calc(clamp(40px,5.5vw,80px) - 2px);z-index:-1;overflow:hidden;pointer-events:none;background:var(--paper)}
+.lp-hero-mesh .lp-aurora{z-index:0}
+
 @media(max-width:560px){
   .lp-feature-track{--lp-feature-gap:50px;gap:var(--lp-feature-gap)}
   .lp-feature-row{grid-template-columns:minmax(0, .38fr) minmax(0, .62fr);gap:18px;align-items:start}
