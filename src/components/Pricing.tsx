@@ -127,7 +127,7 @@ const Pricing = () => {
           </p>
           <div>
             {faqs.map((item) => (
-              <FaqItem key={item.q} q={item.q} a={item.a} />
+              <div key={item.q}><FaqItem q={item.q} a={item.a} /></div>
             ))}
           </div>
         </div>
