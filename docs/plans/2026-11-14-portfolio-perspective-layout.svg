@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="1512" viewBox="0 0 1320 1512" role="img" aria-labelledby="title desc">
+<title id="title">Proposed Inzu portfolio composition</title>
+<desc id="desc">Planning schematic. Six cards connect to a central supplied Inzu mark. The central thread continues into the first feature frame below. Import and channel connections are labeled Planned. Final responsive styling and measured ribbons will be implemented separately.</desc>
+<defs><path id="flare" d="M-1 -18 C-1 -1 12 -1 28 -1 L28 1 C12 1 -1 1 -1 18 Z"/></defs>
+<rect width="1320" height="1512" fill="#d9ded5"/>
+<rect x="24" y="24" width="1272" height="1192" rx="28" fill="#294c34"/>
+<rect x="24" y="1176" width="1272" height="312" rx="28" fill="#f8f9f4"/>
+<g font-family="Arial, sans-serif">
+<text x="84" y="88" fill="#c0d0bd" font-size="13" letter-spacing="1.4">PLANNING SCHEMATIC ? 14 NOVEMBER 2026</text>
+<text x="84" y="154" fill="#f8f9f4" font-size="50" letter-spacing="-2">Your portfolio. In perspective.</text>
+<text x="84" y="198" fill="#c0d0bd" font-size="17">Six content cards. One supplied Inzu mark. A continuous connection into the next section.</text>
+<g transform="translate(60 252)">
+
+<g transform="translate(24 24)"><rect width="344" height="224" rx="24" fill="#d5dfd2"/>
+<text x="24" y="43" font-size="12" fill="#455e4d">TENANT SPACE</text>
+<text x="24" y="84" font-size="25" letter-spacing="-.6" fill="#213a2a">A place for</text>
+<text x="24" y="116" font-size="22" letter-spacing="-.4" fill="#213a2a">your tenants.</text>
+<text x="24" y="149" font-size="14" fill="#455e4d">Unit, invoice and payment records.</text>
+<rect x="24" y="173" width="296" height="27" rx="7" fill="#f8f9f4"/><rect x="36" y="182" width="50" height="8" rx="4" fill="#90b494"/><rect x="98" y="182" width="118" height="8" rx="4" fill="#c4d5b7"/></g>
+<g transform="translate(832 24)"><rect width="344" height="224" rx="24" fill="#d5dfd2"/>
+<text x="24" y="43" font-size="12" fill="#455e4d">PAYMENT RECORDS</text>
+<text x="24" y="84" font-size="25" letter-spacing="-.6" fill="#213a2a">Your payments,</text>
+<text x="24" y="116" font-size="22" letter-spacing="-.4" fill="#213a2a">in one place.</text>
+<text x="24" y="149" font-size="14" fill="#455e4d">Recorded payments and references.</text>
+<rect x="24" y="173" width="296" height="27" rx="7" fill="#f8f9f4"/><rect x="36" y="182" width="50" height="8" rx="4" fill="#90b494"/><rect x="98" y="182" width="118" height="8" rx="4" fill="#c4d5b7"/></g>
+<g transform="translate(24 304)"><rect width="344" height="224" rx="24" fill="#d5dfd2"/>
+<text x="24" y="43" font-size="12" fill="#455e4d">PORTFOLIO</text>
+<text x="24" y="84" font-size="25" letter-spacing="-.6" fill="#213a2a">Your portfolio</text>
+<text x="24" y="116" font-size="22" letter-spacing="-.4" fill="#213a2a">in one view.</text>
+<text x="24" y="149" font-size="14" fill="#455e4d">Properties, occupancy and balances.</text>
+<rect x="24" y="173" width="296" height="27" rx="7" fill="#f8f9f4"/><rect x="36" y="182" width="50" height="8" rx="4" fill="#90b494"/><rect x="98" y="182" width="118" height="8" rx="4" fill="#c4d5b7"/></g>
+<g transform="translate(832 304)"><rect width="344" height="224" rx="24" fill="#d5dfd2"/>
+<text x="24" y="43" font-size="12" fill="#455e4d">CONNECTIONS</text>
+<rect x="246" y="24" width="76" height="27" rx="13.5" fill="#f8f9f4"/><text x="260" y="42" font-size="12" fill="#213a2a">Planned</text>
+<text x="24" y="84" font-size="25" letter-spacing="-.6" fill="#213a2a">Messages and payments,</text>
+<text x="24" y="116" font-size="22" letter-spacing="-.4" fill="#213a2a">connected.</text>
+<text x="24" y="149" font-size="14" fill="#455e4d">WhatsApp / M-Pesa / Bank payments</text>
+<rect x="24" y="173" width="296" height="27" rx="7" fill="#f8f9f4"/><rect x="36" y="182" width="50" height="8" rx="4" fill="#90b494"/><rect x="98" y="182" width="118" height="8" rx="4" fill="#c4d5b7"/></g>
+<g transform="translate(24 584)"><rect width="344" height="224" rx="24" fill="#d5dfd2"/>
+<text x="24" y="43" font-size="12" fill="#455e4d">PROPERTY / UNIT</text>
+<rect x="246" y="24" width="76" height="27" rx="13.5" fill="#f8f9f4"/><text x="260" y="42" font-size="12" fill="#213a2a">Planned</text>
+<text x="24" y="84" font-size="25" letter-spacing="-.6" fill="#213a2a">Import your</text>
+<text x="24" y="116" font-size="22" letter-spacing="-.4" fill="#213a2a">portfolio.</text>
+<text x="24" y="149" font-size="14" fill="#455e4d">Bring existing property and unit records.</text>
+<rect x="24" y="173" width="296" height="27" rx="7" fill="#f8f9f4"/><rect x="36" y="182" width="50" height="8" rx="4" fill="#90b494"/><rect x="98" y="182" width="118" height="8" rx="4" fill="#c4d5b7"/></g>
+<g transform="translate(832 584)"><rect width="344" height="224" rx="24" fill="#d5dfd2"/>
+<text x="24" y="43" font-size="12" fill="#455e4d">MAINTENANCE</text>
+<text x="24" y="84" font-size="25" letter-spacing="-.6" fill="#213a2a">Maintenance,</text>
+<text x="24" y="116" font-size="22" letter-spacing="-.4" fill="#213a2a">kept in view.</text>
+<text x="24" y="149" font-size="14" fill="#455e4d">Requests, status and costs.</text>
+<rect x="24" y="173" width="296" height="27" rx="7" fill="#f8f9f4"/><rect x="36" y="182" width="50" height="8" rx="4" fill="#90b494"/><rect x="98" y="182" width="118" height="8" rx="4" fill="#c4d5b7"/></g>
+<rect x="504" y="320" width="192" height="192" rx="24" fill="#d5dfd2"/>
+<g fill="none" stroke="#d5dfd2" stroke-width="2" stroke-linejoin="round">
+<path d="M396 136 H416 Q436 136 436 156 V348 Q436 368 456 368 H476"/>
+<path d="M396 416 H476"/>
+<path d="M396 696 H416 Q436 696 436 676 V484 Q436 464 456 464 H476"/>
+<path d="M804 136 H784 Q764 136 764 156 V348 Q764 368 744 368 H724"/>
+<path d="M804 416 H724"/>
+<path d="M804 696 H784 Q764 696 764 676 V484 Q764 464 744 464 H724"/>
+</g><g fill="#d5dfd2">
+<use href="#flare" transform="translate(368 136) rotate(0)"/>
+<use href="#flare" transform="translate(368 416) rotate(0)"/>
+<use href="#flare" transform="translate(368 696) rotate(0)"/>
+<use href="#flare" transform="translate(504 368) rotate(180)"/>
+<use href="#flare" transform="translate(504 416) rotate(180)"/>
+<use href="#flare" transform="translate(504 464) rotate(180)"/>
+<use href="#flare" transform="translate(832 136) rotate(180)"/>
+<use href="#flare" transform="translate(832 416) rotate(180)"/>
+<use href="#flare" transform="translate(832 696) rotate(180)"/>
+<use href="#flare" transform="translate(696 368) rotate(0)"/>
+<use href="#flare" transform="translate(696 416) rotate(0)"/>
+<use href="#flare" transform="translate(696 464) rotate(0)"/>
+</g></g>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="42" x="639" y="612" zoomAndPan="magnify" viewBox="560 240 380 1020" height="112" preserveAspectRatio="xMidYMid meet" version="1.0"><defs><g/><clipPath id="19cd07dd3f"><rect x="0" width="472" y="0" height="1500"/></clipPath></defs><g transform="matrix(1, 0, 0, 1, 514, 0.000000000000112861)"><g clip-path="url(#19cd07dd3f)"><g fill="#90b494" fill-opacity="1"><g transform="translate(1.831444, 999.072395)"><g><path d="M 65.75 -496.921875 L 211.359375 -496.921875 L 211.359375 0 L 65.75 0 Z M 138.078125 -579.578125 C 115.535156 -579.578125 96.75 -587.25 81.71875 -602.59375 C 66.6875 -617.9375 59.171875 -636.566406 59.171875 -658.484375 C 59.171875 -681.035156 66.6875 -699.984375 81.71875 -715.328125 C 96.75 -730.671875 115.535156 -738.34375 138.078125 -738.34375 C 160.628906 -738.34375 179.570312 -730.671875 194.90625 -715.328125 C 210.25 -699.984375 217.921875 -681.035156 217.921875 -658.484375 C 217.921875 -636.566406 210.25 -617.9375 194.90625 -602.59375 C 179.570312 -587.25 160.628906 -579.578125 138.078125 -579.578125 Z M 138.078125 -579.578125 "/></g></g></g><g fill="#90b494" fill-opacity="1"><g transform="translate(469.892568, 500.917025)"><g><path d="M -65.75 496.921875 L -211.359375 496.921875 L -211.359375 0 L -65.75 0 Z M -138.078125 579.578125 C -115.535156 579.578125 -96.75 587.25 -81.71875 602.59375 C -66.6875 617.9375 -59.171875 636.566406 -59.171875 658.484375 C -59.171875 681.035156 -66.6875 699.984375 -81.71875 715.328125 C -96.75 730.671875 -115.535156 738.34375 -138.078125 738.34375 C -160.628906 738.34375 -179.570312 730.671875 -194.90625 715.328125 C -210.25 699.984375 -217.921875 681.035156 -217.921875 658.484375 C -217.921875 636.566406 -210.25 617.9375 -194.90625 602.59375 C -179.570312 587.25 -160.628906 579.578125 -138.078125 579.578125 Z M -138.078125 579.578125 "/></g></g></g></g></g></svg>
+<g fill="#d5dfd2"><use href="#flare" transform="translate(660 764) rotate(90)"/></g>
+<path d="M660 790 V1220 Q660 1240 680 1240 H1006 Q1026 1240 1026 1260 V1274" fill="none" stroke="#d5dfd2" stroke-width="2"/>
+<g fill="#d5dfd2"><use href="#flare" transform="translate(1026 1300) rotate(-90)"/></g>
+<text x="84" y="1113" fill="#c0d0bd" font-size="13">Graphics are illustrative; planned capabilities are marked.</text>
+<text x="84" y="1290" fill="#213a2a" font-size="31" letter-spacing="-1">Less searching.</text>
+<text x="84" y="1330" fill="#213a2a" font-size="31" letter-spacing="-1">More knowing.</text>
+<text x="84" y="1370" fill="#455e4d" font-size="15">Existing next section remains.</text>
+<rect x="856" y="1300" width="340" height="144" rx="23" fill="#d5dfd2"/>
+<rect x="863" y="1307" width="326" height="130" rx="17" fill="#a7bd9e"/>
+<text x="894" y="1380" fill="#213a2a" font-size="17">Existing first pattern frame</text>
+<text x="84" y="1470" fill="#455e4d" font-size="12">Structure only: final typography, mini-graphics, responsive layouts and measured filled ribbons follow the companion plan.</text>
+</g></svg>

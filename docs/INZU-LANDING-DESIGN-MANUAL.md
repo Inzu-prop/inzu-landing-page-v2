@@ -1,7 +1,8 @@
 ﻿# Inzu landing page design manual
 
 **Scope:** The public landing page and its About page in this repository.  
-**Status:** Working design manual, based on the implementation and design decisions made during the November 2026 redesign. Update it whenever the visual system or implementation changes.  
+**Status:** Working design manual, updated for the six-card portfolio diagram on 14 November 2026. Its source and automated checks are verified; browser visual signoff is pending. See [portfolio verification](portfolio-diagram-verification.md). Update this manual whenever the visual system or implementation changes.
+
 **Source of truth:** The running page and the files listed below. This manual records both intentional direction and implementation limitations; it is not a claim that every connector has been verified at every viewport.
 
 ## 1. Design direction
@@ -16,7 +17,14 @@ The user has repeatedly emphasized that details matter. A line ending a few pixe
 
 | File | Responsibility |
 | --- | --- |
-| `src/components/Landing.tsx` | Home composition, `Header`, shared `PanelCorners`, dashboard illustration, measured feature connector, pattern track, closing thread and footer shape. |
+| `src/components/Landing.tsx` | Home composition, `Header`, shared `PanelCorners`, measured portfolio/feature anchors and global connector SVG, pattern track, closing thread and footer shape. |
+| `src/components/PortfolioDiagram.tsx` | Semantic six-card figure, original static mini-graphics, supplied central mark and stable card anchor refs. |
+| `src/components/portfolio-diagram-content.ts` | Typed card IDs/order, approved copy, planned status and channel labels. |
+| `src/components/portfolio-diagram.css` | Scoped portfolio palette/layout, container-query modes, shared SVG layer and exit corridors. Imported after `landing.css`. |
+| `src/components/portfolio-diagram-geometry.ts` | Pure raw-viewport-to-host conversion, DPR snapping, filled ribbons, routing, attachments and invalid-geometry diagnostics. |
+| `src/components/usePortfolioConnections.ts` | Atomic DOM snapshot, resize/font/DPR lifecycle, shared-geometry state and cleanup. |
+| `scripts/check-portfolio-geometry.ts` | 76 focused layout/DPR/attachment/stress/invalid-state checks, including FAQ entrance routes. |
+| `src/assets/inzu-mark.svg` | Unmodified supplied isolated two-inverted-i mark, copied from the frontend app's `public/brand/inzu-mark.svg`. |
 | `src/components/AboutPage.tsx` | About composition, irregular intro surface, fixed SVG paths, value cards and their bridges. |
 | `src/components/LegalPage.tsx` and `src/components/legal.css` | Shared landing-style layout for the existing Terms and Privacy text, with an on-page contents list. |
 | `src/components/landing.css` | Landing-specific colors, layout, components, breakpoints, masks, layers and animation rules. |
@@ -27,7 +35,7 @@ The user has repeatedly emphasized that details matter. A line ending a few pixe
 | `src/index.css` | Global type imports and body defaults. |
 | `public/images/inzu-architecture.webp` | Property image used later in the homepage story. |
 
-The site is React + TypeScript + Vite. It uses React Router, Lucide icons and `tabbied` for generated patterns. `npm run dev` starts Vite (configured for port 3000); `npm run build` produces the production build; `npm run preview` serves a build. The existing preview in this work session used `http://127.0.0.1:4174`, but ports can vary. `npm run lint` runs `tsc --noEmit`.
+The site is React + TypeScript + Vite. It uses React Router, Lucide icons and `tabbied` for generated patterns. `npm run dev` starts Vite (configured for port 3000); `npm run build` produces the production build; `npm run preview` serves a build. The current local development preview is `http://127.0.0.1:3000/`; an HTTP 200 was verified on 14 November, but browser rendering was not inspected. Ports can vary. `npm run lint` runs `tsc --noEmit`; `node ./node_modules/tsx/dist/cli.mjs scripts/check-portfolio-geometry.ts` runs the focused geometry checks with the already installed runner.
 
 **CSS caveat:** `landing.css` has accumulated successive overrides, superseded rules and some selectors for earlier designs. Search all occurrences and inspect the computed style and cascade before editing. An early value is not necessarily active. Remove obsolete rules only as a deliberate, separately verified cleanup. Do not assume a code comment describes the current rendering; for example, the closing panel now uses a WebGL canvas, despite older CSS-gradient comments.
 
@@ -56,11 +64,13 @@ The landing shell uses **Be Vietnam Pro**, falling back to sans-serif. It is imp
 
 Use large, legible headings with short supporting copy and a clear information hierarchy. The user dislikes decorative all-caps numbered eyebrows such as `THE INZU PLATFORM / 01`, `WHAT GUIDES US / 03`, and `LET'S TALK / 03`; these were deliberately removed from the relevant sections. Do not add them back as default decoration. Functional labels that have a clear purpose, such as the existing small manifesto pill, are different and should not be removed without a reason.
 
-Describe concrete property-management work: seeing portfolio records, keeping track of rent and payments, and making the landlord-tenant relationship easier to manage. Keep claims aligned with real or explicitly planned product capabilities. Do not add invented statistics, customer claims or implementation details, and do not mention the messaging channel merely to explain how payments work. The illustrative dashboard is explicitly labeled as illustrative: do not present its numbers as live results.
+Describe concrete property-management work: seeing portfolio records, keeping track of rent and payments, and making the landlord-tenant relationship easier to manage. Keep claims aligned with real or explicitly planned product capabilities. Do not add invented statistics, customer claims or implementation details, and do not mention the messaging channel merely to explain how payments work. The old illustrative dashboard and its example metrics have been removed. The six-card figure labels its graphics illustrative; portfolio import and channel connectivity have visible **Planned** labels. The channel names also have a screen-reader equivalent outside the hidden decorative artwork. Do not imply that the planned import, live bank feeds, disabled M-Pesa processing or automatic reconciliation are active services.
 
 ## 5. Wordmark and navigation
 
 Use the supplied Inzu artwork, not text typed to approximate the logo. `BrandMark` uses the derived dark SVG for the light navigation and footer. The original Canva export has an 800 x 500 outer canvas, while the derived viewBox is tightened around its artwork. The visible wordmark is sized through `.lp .lp-brand img` at 64 x 40px with `object-fit: contain`; keep the artwork's aspect ratio intact. SVG is resolution-independent, but extra viewBox padding or distorted proportions can still make it appear too small, too large or wrong. Check the actual visible artwork, not just the image element's box.
+
+The portfolio hub uses the supplied isolated mark (`inzu-mark.svg`), not the navigation wordmark. Preserve its `viewBox="560 240 380 1020"` and `preserveAspectRatio="xMidYMid meet"`. The SVG declares a square intrinsic element size; use a square image box with `object-fit:contain` (112px maximum desktop, 96px tablet/small desktop, 88px phone). The artwork itself remains tall and narrow. Do not stretch it or apply a tall CSS image box that can double-letterbox it.
 
 `Header` is shared between Home and About. On desktop it contains the logo, Pricing, About and Sign in. The user removed Request access, How it works and The platform from the navigation; access calls to action remain in the page content and the latter links remain in the footer. At 900px and below the desktop links/actions are hidden in favor of a menu with equivalent remaining destinations; it exposes `aria-expanded`, `aria-controls`, and closes on Escape.
 
@@ -74,7 +84,7 @@ The homepage hero has one centered primary action. Its `Get to know` label inclu
 
 1. Light animated hero with centered message, supporting sentence and a single call to action. Its white-based mesh fades to paper above the stepped lower edge, which has rounded top corners and stepped cutouts.
 2. A thin vertical connection flares out of the hero and into the small `A little more clarity` pill above the manifesto.
-3. Dark green portfolio panel with an illustrative dashboard, meeting a light feature area. The feature area has three patterned frames beside their descriptions and colored word highlights, followed by a property image.
+3. Dark green portfolio panel with six cards for tenants, recorded payments, portfolio overview, planned channel connections, planned portfolio import and maintenance, joined to the supplied central Inzu mark. The same measured SVG continues into the first patterned frame in the adjoining light feature area. Three feature frames remain beside their descriptions and colored word highlights, followed by a property image.
 4. Conversation / access section, then a large dark animated closing stage with a fine line passing through it.
 5. A light footer overlapping the closing stage with shaped shoulders and a connection integrated into the top edge.
 
@@ -102,9 +112,29 @@ The visual goal is a narrow continuous thread that grows smoothly from a surface
 
 ### The robust approach: measure actual endpoints
 
-`FeatureFlow` in `Landing.tsx` uses refs to the containing wrapper, dashboard and first pattern frame. In `useLayoutEffect`, it reads their `getBoundingClientRect()` values, converts the two anchor centers into the wrapper's coordinate space, and draws an SVG route and its endpoint flare using those same measurements. A `ResizeObserver` watches the wrapper and both anchors; window resize schedules a remeasurement via `requestAnimationFrame`. Observers, the event listener and queued frame are cleaned up on unmount. The measured overlay is hidden at 900px and below where the layout changes.
+`FeatureFlow` in `Landing.tsx` owns one SVG overlay outside both section panels. `usePortfolioConnections` reads raw viewport border boxes for the host, frame/stage, hub, all six card surfaces, overview/heading/invisible route anchor, actual bottom-corner extent, stories/intro/track, first-copy obstacle and first pattern-frame target. The pure `buildPortfolioGeometry` function alone converts these to host coordinates: snap viewport edges/ports once to the current DPR grid, then subtract the **raw, unsnapped host origin**. Do not normalize in the hook and again in geometry.
 
-When adding a connection between independently responsive elements, prefer this measured approach over separately assumed percentage centers. Measure the visible boundaries, not arbitrary parent widths. Use one coordinate space; measure after layout; remeasure on resizing or other layout changes. The current feature overlay uses a stroked route plus a filled flare calculated from the same `x2/y2`: it is **not** literally one single SVG path. Match their endpoints and colors carefully. Use a single filled path for a route and flare where feasible, or use overlap and shared coordinates deliberately.
+Each portfolio card keeps its solid connector-colored outer surface and places existing property photos and a distinct color accent inside the artwork. Four local images are reused with different crops across the six cards; preserve their files when preparing a commit. The artwork reflows above the details on narrow layouts.
+
+The portfolio heading is centered. Cards show only their headings and artwork; explanatory answers appear in the homepage FAQ. The colorful inset artwork has a thinner frame, and the hub uses an original stepped SVG silhouette. Its flat side and bottom attachment areas must stay aligned with the measured hub box; changing the silhouette requires rechecking every flare.
+
+The network uses seven filled paths: six card relationships plus the hub/spine-to-first-frame route. Each desktop branch integrates its card/hub flares into one closed ribbon; compact branches overlap the continuous spine in the same fill. The neck is 2 CSS px; terminal surfaces have 1px penetration. Cards, hub, connectors and pattern borders share `#d5dfd2`, so the path crosses the dark/paper boundary without a color-switch segment. Whole flare footprints are checked against corner tangencies. At hub heights below 184px, side endpoints use compact flares and constrained port offsets; the 160px hub uses offsets 42/42/118px on the left and 42/118/118px on the right, with shared ports creating forks.
+
+The diagram's **available container width**, not viewport width, selects its topology and sets `--portfolio-layout` on the stage:
+
+- At least 1000px: three compact, offset card rows around a row-two hub; different pairs share a side port to create asymmetric forks.
+- 600px to below 1000px: hub above three paired rows; 64px central gutter/spine.
+- Below 600px: centered hub above six stacked cards; 48px left card inset with a spine at x=12px.
+
+The adjoining stories layout independently changes at **viewport 900px**, exposed by `--portfolio-story-layout`. In the stacked stories layout, the exit moves inside a flat boundary-crossing region, turns through a reserved upper paper band into the right-padding lane, bypasses the intro, then returns through a minimum 72px gap above the first frame. The scoped story top padding is `corner-size + 48px`; row gap 32px plus feature-track top margin 40px provides the lower band. The phone figure reserves **128px bottom padding** for the inward turn after the cards; tablet/desktop reserve 96px. Keep these corridors explicit and independent of generated SVG dimensions.
+
+The hook measures initially in `useLayoutEffect`. A `ResizeObserver` watches all layout anchors; window resize, `document.fonts.ready`, font `loadingdone` and re-armed resolution media queries schedule one coalesced rAF measurement. Stable ref identities are effect dependencies. The complete snapshot is read before one geometry state publication, and unchanged path/size/status signatures do not cause another render. Cleanup disconnects the observer, removes listeners, cancels the queued frame and live-guards the async font callback. No scroll loop, permanent animation loop or observed-element size writes are used.
+
+The global `.lp-portfolio-connections` overlay has z-index 5, `overflow:visible`, `pointer-events:none`, a host-sized viewBox, `aria-hidden` and no focus target. Artwork clips locally inside cards; the route is outside panel clipping. A valid network exposes `data-portfolio-connections="ready"` on the host. Invalid geometry retains the HTML cards, withholds all connector paths, exposes `data-portfolio-errors`, and logs changed diagnostics in development only. This is inspectability, not a visual guarantee: all new-card joins still require the pending browser review recorded in [the verification report](portfolio-diagram-verification.md).
+
+When adding connections between independently responsive elements, use actual visible boundaries in this shared coordinate space. Do not recreate the removed dashboard connector, `.lp-stories::before`, `.lp-overview-thread` or `.lp-feature-entrance` as an additional owner.
+
+The FAQ has a separate measured entrance owned by `PortfolioAndFaq`: its SVG joins the bottom of the stories section to the top of the paper-colored question panel, with no exit from the panel. It uses the shared filled-ribbon geometry and measures both surfaces in the wrapper's coordinate space; resize and font readiness trigger recalculation. Its 1px SVG viewport and matching viewBox establish a fixed one-to-one coordinate space, with visible overflow for the path: do not stretch the SVG to the wrapper's changing height, as that makes the connector jump while answers animate. On narrow screens the route passes through the right gutter to avoid the heading. Keep the entrance fill matched to both surfaces and check the joins, bends, clipping and text clearance at desktop and phone widths. The FAQ title sits outside the panel; its accessible button-driven answers animate their height and honor reduced motion. The geometry checks pass, but the new FAQ layout and connector have not yet been visually verified in a browser.
 
 ### Fixed paths in the current About page
 
@@ -114,7 +144,7 @@ The three About cards are connected at their midpoints by small SVG bridge shape
 
 ### Vertical track and final stage
 
-Between homepage pattern frames, `.lp-node-link` uses a single filled SVG with curved flares and a narrow center. It overlaps the neighboring borders by approximately 1px so that the connector and `#d5dfd2` frame read as one piece. Its height follows `--lp-feature-gap`; the link is hidden at 560px and below when the pattern/copy layout stacks. Avoid a separate center line plus two independent rounded shapes: they previously produced a small rectangular protrusion and uneven neck when subpixels or browser zoom changed.
+Between homepage pattern frames, `.lp-node-link` uses a single filled SVG with curved flares and a narrow center. It overlaps the neighboring borders by approximately 1px so that the connector and `#d5dfd2` frame read as one piece. Its height follows `--lp-feature-gap`. The final active 560px-and-below CSS keeps pattern/copy rows in `.38fr / .62fr` columns, with a 50px gap between feature rows and visible `.lp-node-link` bridges; earlier stack/hide rules are superseded. Avoid a separate center line plus two independent rounded shapes: they previously produced a small rectangular protrusion and uneven neck when subpixels or browser zoom changed.
 
 The closing section uses `.lp-final-flow` with `FinalThread` as one SVG across the space above and the dark stage. This was introduced after separately drawn segments met with a visible angle and color jump at the section boundary. The final thread also contains a small circular node and extends towards the footer edge. Keep it above the shader, but below interactive content; preserve its continuity at the footer and avoid crossing text or controls.
 
@@ -142,7 +172,7 @@ Do not replace the motion with a static rectangular image or a single predictabl
 
 ## 10. Responsive and accessible behavior
 
-- At 900px and below, the navigation collapses to a menu; the feature layout reflows; the measured overview-to-first-frame connector is hidden. At 700px and below, About cards stack and their horizontal bridges are hidden. At 560px and below, home pattern frames and text stack, vertical pattern connectors are hidden, margins tighten, and the footer overlap changes.
+- At viewport 900px and below, navigation collapses and feature stories stack their intro above the track. The new portfolio network remains active through its independently selected 1000px/600px container modes and routes around that intro. At 700px and below, About cards stack and their horizontal bridges hide. At 560px and below, homepage feature rows keep their final `.38fr / .62fr` pattern/copy columns with visible vertical pattern links; overview side padding becomes 16px, shell margins tighten, and footer overlap changes.
 - When a connector is hidden for a breakpoint, make sure it leaves no floating flare or stray stub. The page should still make visual sense without it. Do not stretch a desktop diagonal line blindly into the mobile arrangement.
 - Keep body text readable against surfaces and animation. Check contrast across multiple frames, including the brightest coral or pale-green parts. Ensure the page still works with the font fallback and without WebGL.
 - Use semantic headings, links and buttons, meaningful logo alt text, and a visible keyboard focus state. Decorative SVG/canvas should not receive pointer events or be announced as meaningful content. Preserve the homepage skip link and the menu's accessible state and Escape handling.
@@ -152,11 +182,11 @@ Do not replace the motion with a static rectangular image or a single predictabl
 
 After changing shapes, SVG paths, typography, copy or responsive layout:
 
-1. Run `npm run build` and `npm run lint`. They catch build/type errors, not visual alignment defects.
+1. Run `npm run build`, `npm run lint` and `node ./node_modules/tsx/dist/cli.mjs scripts/check-portfolio-geometry.ts` after changing the portfolio network. These catch build/type/geometry failures, not rendered visual alignment defects.
 2. Start or reuse the local server. Check the actual updated page; a Vite **preview** serves the built `dist` and may need a fresh build and browser refresh. Do not assume an old tab has hot-reloaded.
 3. Inspect Home and About at a wide desktop viewport, a medium/tablet width, and a narrow phone width. Include the current breakpoints (around 900, 700 and 560px), both sides of each breakpoint, and browser zoom / device scaling if practical.
 4. Scroll slowly through the header compression threshold. Check the page at the top and after scrolling, with the menu closed and open on mobile. No jump, overlap, clipped title or unreachable control.
-5. Inspect every changed seam at normal scale and zoomed in: both outer corners, the center of each flare, the full path, and both neighboring surfaces. In particular: hero to manifesto pill; overview/dashboard to first frame; pattern-to-pattern necks; About content to intro; intro to middle card; between all three About cards; About exit to CTA; final stage to footer.
+5. Inspect every changed seam at normal scale and zoomed in: both outer corners, the center of each flare, the full path, and both neighboring surfaces. In particular: hero to manifesto pill; all six portfolio-card entries, hub ports/spine and exit to first frame; pattern-to-pattern necks; About content to intro; intro to middle card; between all three About cards; About exit to CTA; final stage to footer.
 6. Look for stray horizontal/vertical slivers, detached flares, protruding rectangular pixels, mismatched centerlines or colors, sharp angle changes and cut-off curves. Check that the background seen through each notch is the intended neighbor. Test long copy / resized windows because fixed percentages and text wrapping can change positions.
 7. Watch the meshes and patterns over time, not just one frame. Confirm the art fills its container, changes shape, maintains text contrast, respects reduced motion, and does not keep the page busy off-screen. Check the static fallback where WebGL is unavailable.
 8. Check the requested destinations, keyboard focus, menu controls and screen-reader labels after changing markup. Do not click a form submission or send a request as part of visual QA.
@@ -166,7 +196,7 @@ After changing shapes, SVG paths, typography, copy or responsive layout:
 
 - The homepage hero uses a light mesh that fades to the original paper-colored surface before the stepped strip and connector. A paper background is the WebGL fallback. Bottom corner overlays are offset downward by 2px to overlap the clipped panel edge; the hero and corner seams need close visual verification at phone widths and browser zoom levels.
 
-- The measured homepage feature line is tied to a desktop layout and intentionally hidden at narrower widths. It should not be represented as a universal measured connector system.
+- The new homepage portfolio network implements three measured topologies and a separate stacked-story bypass. Build/TypeScript and the 73-case geometry suite pass, but **no new portfolio card, flare, bend, boundary seam or destination was visually inspected** in this implementation session. Browser access was unavailable and native browser control was stopped by CUA URL-confidence enforcement. See the all-uninspected joint ledger in [the verification report](portfolio-diagram-verification.md). This system does not replace the fixed About connectors.
 - The About routes and card bridges use fixed SVG/CSS geometry, not the measured connector. Their alignment is sensitive to changes in width, aspect ratio, text wrapping and the stepped intro. Revisit with measured anchors if the composition changes or a new seam appears.
 - The About outgoing route and incoming route use viewBox coordinates that assume the current intro's width and contour. Keep flares inside a straight portion of the surface. The desktop upper connection was visually checked after a detached flare was moved inward; that does not verify every mobile size or zoom level.
 - There are duplicate/overriding CSS blocks and legacy declarations. Refactoring them is useful, but only with before/after visual checks at all affected breakpoints; deleting a seemingly obsolete rule can expose an older one.
