@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowDown, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { Header, PanelCorners } from './Landing';
 import BrandMark from './BrandMark';
 import Aurora from './Aurora';
@@ -18,10 +18,9 @@ function AboutConnector() {
 export default function AboutPage() {
   return <div className="lp lp-about"><Header /><main id="main">
     <section className="lp-panel lp-about-hero lp-shaped">
-      
       <h1>Property deserves a clearer perspective.</h1>
       <p>Inzu is being built to help property owners keep the details of their portfolios in view, without losing sight of the people behind them.</p>
-      <a className="lp-text-link" href="#our-approach">Our approach <ArrowDown size={16} /></a><PanelCorners bottom />
+      <PanelCorners bottom />
     </section>
     <section className="lp-about-intro" id="our-approach"><div className="lp-hero-thread" aria-hidden="true"><span className="lp-thread-line"/><svg className="lp-thread-flare lp-thread-top" viewBox="0 0 64 28"><path d="M0 0 C20 0 31 0 31 28 H33 C33 0 44 0 64 0 Z"/></svg><svg className="lp-thread-flare lp-thread-bottom" viewBox="0 0 64 28"><path d="M0 0 C20 0 31 0 31 28 H33 C33 0 44 0 64 0 Z"/></svg></div><span className="lp-section-label lp-manifesto-label">THE IDEA</span><p>Good property management starts with knowing what is happening, and having the information to act.</p></section>
     <section className="lp-panel lp-about-content lp-shaped"><PanelCorners/><div><h2>A better way to keep track.</h2></div><div><p>Properties bring together a lot of moving parts: units, tenants, invoices, payments and maintenance. Inzu brings those records into one place, so owners can find the details they need.</p><p>We're building for a more considered day-to-day, with a clearer view of the things that make a property work.</p><Link to="/#features" className="lp-text-link">Explore the platform <ArrowUpRight size={16} /></Link></div><PanelCorners bottom/></section>

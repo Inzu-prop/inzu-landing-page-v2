@@ -6,12 +6,14 @@ import radius from 'tabbied/patterns/radius';
 import blossom from 'tabbied/patterns/blossom';
 import veil from 'tabbied/patterns/veil';
 import BrandMark from './BrandMark';
+import { RoomAccent } from './InzuAccents';
+import { HeadingReveal, ManifestoText, PricingSection } from './ScrollText';
 import Aurora from './Aurora';
 import PortfolioDiagram from './PortfolioDiagram';
 import type { PortfolioCardId } from './portfolio-diagram-content';
 import usePortfolioConnections from './usePortfolioConnections';
 import { ribbonPath } from './portfolio-diagram-geometry';
-import wordmark from '../assets/inzu-wordmark-canva.svg';
+import wordmark from '../assets/inzu-wordmark-dark.svg';
 import './landing.css';
 import './portfolio-diagram.css';
 
@@ -70,7 +72,7 @@ type FeatureStoryRefs = {
 
 function FeatureStories({ storiesRef, introRef, trackRef, firstPatternRef, firstCopyRef }: FeatureStoryRefs) {
   return <section ref={storiesRef} className="lp-stories lp-stories--portfolio-entry lp-panel lp-shaped">
-    <div ref={introRef} className="lp-story-intro"><h2>Less searching.<br />More knowing.</h2><p>A place for the records and conversations that keep a property moving.</p></div>
+    <div ref={introRef} className="lp-story-intro"><h2><HeadingReveal>Less searching.<br />More knowing.</HeadingReveal></h2><p>A place for the records and conversations that keep a property moving.</p><RoomAccent className="lp-accent lp-accent-room" /></div>
     <div ref={trackRef} className="lp-feature-track">{features.map(({ number, highlight, title, description, pattern, seed, palette }, index) => <article className="lp-feature-row" key={number}>
       <div className="lp-pattern-node" aria-hidden="true"><div ref={index === 0 ? firstPatternRef : undefined} className="lp-pattern-frame"><div className="lp-pattern-motion"><TabbiedPattern pattern={pattern} seed={seed} palette={palette} fit="cover" options={{ grid: '4x6' }} /></div></div>{index < features.length - 1 && <svg className="lp-node-link" viewBox="0 0 64 100" preserveAspectRatio="none"><path d="M0 0 C20 0 31 0 31 28 V72 C31 100 20 100 0 100 H64 C44 100 33 100 33 72 V28 C33 0 44 0 64 0 Z" /></svg>}</div>
       <div ref={index === 0 ? firstCopyRef : undefined} className="lp-feature-copy"><h3><mark>{highlight}</mark> {title}</h3><p>{description}</p></div>
@@ -116,7 +118,7 @@ function FeatureFlow({ storiesAnchor }: { storiesAnchor: RefObject<HTMLElement |
     <section ref={overview} className="lp-overview lp-portfolio-overview lp-panel lp-shaped" id="features">
       <PanelCorners />
       <div className="lp-overview-heading" ref={overviewHeading}>
-        <div><h2>Your portfolio.<br /><em>In perspective.</em></h2></div>
+        <div><h2><HeadingReveal>Your portfolio.<br /><em>In perspective.</em></HeadingReveal></h2></div>
         <p>From the big picture to the details, bring the information you need together in one considered space.</p>
       </div>
       <PortfolioDiagram anchors={{ frame: diagramFrame, stage: diagramStage, hub, caption, cards }} />
@@ -173,7 +175,7 @@ function PortfolioAndFaq() {
     {route && <svg className="lp-faq-connector" width="1" height="1" viewBox="0 0 1 1" aria-hidden="true" focusable="false"><path d={route} /></svg>}
     <FeatureFlow storiesAnchor={stories} />
     <section className="lp-faq" aria-labelledby="faq-title">
-      <div className="lp-faq-intro"><h2 id="faq-title">A few things<br />worth knowing.</h2><p>More about how Inzu brings the details of your portfolio together.</p></div>
+      <div className="lp-faq-intro"><h2 id="faq-title"><HeadingReveal>A few things<br />worth knowing.</HeadingReveal></h2><p>More about how Inzu brings the details of your portfolio together.</p></div>
       <div className="lp-faq-list" ref={panel}>
         {faqItems.map(([question, answer], index) => {
           const expanded = open.includes(index);
@@ -195,11 +197,11 @@ export default function Landing() {
       <PanelCorners bottom />
     </section>
 
-    <section className="lp-manifesto" id="how-it-works"><div className="lp-hero-thread" aria-hidden="true"><span className="lp-thread-line" /><svg className="lp-thread-flare lp-thread-top" viewBox="0 0 64 28"><path d="M0 0 C20 0 31 0 31 28 H33 C33 0 44 0 64 0 Z" /></svg><svg className="lp-thread-flare lp-thread-bottom" viewBox="0 0 64 28"><path d="M0 0 C20 0 31 0 31 28 H33 C33 0 44 0 64 0 Z" /></svg></div><span className="lp-section-label lp-manifesto-label">A LITTLE MORE CLARITY</span><p>Property comes with a lot of moving parts. <strong>Keeping track of them should feel a little more human.</strong></p></section>
+    <section className="lp-manifesto" id="how-it-works"><div className="lp-hero-thread" aria-hidden="true"><span className="lp-thread-line" /><svg className="lp-thread-flare lp-thread-top" viewBox="0 0 64 28"><path d="M0 0 C20 0 31 0 31 28 H33 C33 0 44 0 64 0 Z" /></svg><svg className="lp-thread-flare lp-thread-bottom" viewBox="0 0 64 28"><path d="M0 0 C20 0 31 0 31 28 H33 C33 0 44 0 64 0 Z" /></svg></div><span className="lp-section-label lp-manifesto-label">A LITTLE MORE CLARITY</span><ManifestoText /></section>
 
     <PortfolioAndFaq />
 
-    <section className="lp-pricing" id="pricing"><h2>A better view starts<br /><em>with a conversation.</em></h2><p>Tell us about your properties and find out how Inzu could fit the way you work. Get in touch for access and pricing information.</p><div className="lp-pricing-action"><ArrowLink to="/request-access">Request access</ArrowLink></div></section>
+    <PricingSection><p>Tell us about your properties and find out how Inzu could fit the way you work. Get in touch for access and pricing information.</p><div className="lp-pricing-action"><ArrowLink to="/request-access">Request access</ArrowLink></div></PricingSection>
     <div className="lp-final-flow"><FinalThread /><div className="lp-pricing-thread" aria-hidden="true"><svg className="lp-pricing-flare" viewBox="0 0 64 28"><path d="M0 0 C20 0 31 0 31 28 H33 C33 0 44 0 64 0 Z" /></svg></div>
     <section className="lp-final lp-panel lp-shaped"><PanelCorners /><Aurora /><div className="lp-final-copy"><span className="lp-section-label">A LITTLE MORE ROOM TO THINK</span><h2>Good things happen<br />when you have <em>clarity.</em></h2><ArrowLink light to="/request-access">Let's get started</ArrowLink></div></section></div>
   </main><footer className="lp-footer lp-panel lp-home-footer"><svg className="lp-footer-edge" viewBox="0 0 1200 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90 V78 Q0 56 22 56 H42 Q65 56 65 33 V22 Q65 0 87 0 H1113 Q1135 0 1135 22 V33 Q1135 56 1158 56 H1178 Q1200 56 1200 78 V90 Z" /><path d="M994 0 C1014 0 1019 -8 1019 -28 H1021 C1021 -8 1026 0 1046 0 Z" /></svg><div><BrandMark /><p>A clearer perspective on property.</p></div><div className="lp-footer-links"><a href="#how-it-works">How it works</a><a href="#features">The platform</a><Link to="/about">About</Link><a href="mailto:hello@inzu.co">Contact</a></div><div className="lp-footer-links"><Link to="/privacy-policy">Privacy policy</Link><Link to="/terms-of-service">Terms of service</Link><a href="https://app.inzu.co/sign-in">Sign in <ArrowRight size={13}/></a></div><div className="lp-footer-bottom"><span>© {new Date().getFullYear()} INZU</span><span>NAIROBI, KENYA</span><a href="#main">BACK TO TOP ↑</a></div></footer></div>;
